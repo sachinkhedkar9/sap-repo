@@ -1,0 +1,63 @@
+<div>
+  rendering...
+  {{sarender.config}}
+    <div ng-switch on="sarender.config.answerType">
+      <div ng-switch-when="SingleLineLimited">
+        <ng-form name="saInternalForm">
+        <sa-input   name="{{sarender.config.key}}"
+                    ng-model="sarender.config[sarender.config.ngmodel]"
+                    type="{{sarender.config.answerType}}"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    ng-required="sarender.config.required"
+                    ng-readonly="!sarender.config.editable"
+        >
+        </sa-input>
+
+        <div ng-messages="saInternalForm[sarender.config.key].$error">
+          <div ng-message="required">This can not be empty.
+          </div>
+        </div>
+        </ng-form>
+
+      </div>
+      <div ng-switch-when="checkbox">
+        <sa-input name="{{sarender.config.key}}" ng-model="sarender.config[sarender.config.ngmodel]"
+                    type="{{sarender.config.answerType}}"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    ng-required="sarender.config.required"
+                    ng-readonly="!sarender.config.editable"
+        >
+        </sa-input>
+        <div ng-messages="saInternalForm[sarender.config.key].$error">
+          <div ng-message="required">This can not be empty.
+          </div>
+        </div>
+      </div>
+      <div ng-switch-default>
+        <ng-form name="saInternalForm">
+          <sa-input data-xng-class="{'currencyyyyyy':!!sarender.config.currency}"
+                    data-xng-attr-data-sa-currency="{{!!sarender.config.currency?sarender.config.currency:false}}"
+                    data-xcurrency="{{sarender.config.currency.symbol}}"
+                    data-xname="{{sarender.config.key}}"
+                    data-xng-model="sarender.config[sarender.config.ngmodel]"
+                    data-xtype="{{sarender.config.answerType}}"
+                    data-xng-model-options="{ updateOn: 'blur' }"
+                    data-xng-required="sarender.config.required"
+                    data-xng-readonly="!sarender.config.editable"
+                    data-xng-min="sarender.config.range.minValue"
+                    data-xng-max="sarender.config.range.maxValue"
+                    data-xpre-text="{{sarender.config.preText}}"
+                    ng-attr-data-xsai-decimal="{{sarender.config.decimal}}"
+
+          >
+
+          </sa-input>
+
+          <div ng-messages="saInternalForm[sarender.config.key].$error">
+            <div ng-message="required">This can not be empty.
+            </div>
+          </div>
+        </ng-form>
+      </div>
+    </div>
+</div>

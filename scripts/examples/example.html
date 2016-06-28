@@ -1,0 +1,111 @@
+<div class="container"> Show From: <input type="text" ng-init="egctrl.qindex = 0" ng-model="egctrl.qindex"  style="width:40px"> To: <input type="text" style="width:40px" ng-init="  egctrl.showNumberofQs = 100" ng-model="egctrl.showNumberofQs"> Questions
+<pre>{{egctrl.questions}} </pre>
+  <!--Add Question form-->
+  <div class="panel panel-default"   ng-class="{hidden:egctrl.closed}"
+       style="border:2px solid gray;z-index:10;position:fixed; top:50%; left:50%;transform:translate(-50%, -50%); "  >
+
+    <div class="panel-heading">Add Question<button class="pull-right" ng-click="egctrl.closed = true">X</button></div>
+    <div class="panel-body">
+
+      <div > <label for="questionlabel">Label</label> <input type="text" ng-model="egctrl.selectedQ.label"></div>
+      <div > <label for="regexPattern">Regex Field</label> <input type="text" ng-model="egctrl.selectedQ.regexPattern"></div>
+      <div > <label for="ngmodelcolumn">Value Field</label> <input type="text" ng-model="egctrl.selectedQ.ngmodel"></div>
+      <div><label for="answertype">AnswerType</label>
+        <select name="answerType" ng-model="egctrl.selectedQ.answerType" id="answerType">
+          <option value="SingleLineLimited">SingleLineLimited</option>
+          <option value="email">email</option>
+          <option value="number">number</option>
+          <option value="wholeNumber">wholeNumber</option>
+          <option value="date">date</option>
+          <option value="checkbox">checkbox</option>
+        </select>
+      </div>
+      <div>
+        <label for="required">Is Required</label> <input type="checkbox" ng-model="egctrl.selectedQ.required"/>
+      </div>
+      <div>
+        <label for="readonly">Editable</label> <input type="checkbox" ng-model="egctrl.selectedQ.editable"/>
+      </div>
+      <div>
+        <label for="readonly">Decimal</label> <input   type="checkbox" ng-model="egctrl.selectedQ.decimalBool" ng-change="egctrl.decimalChanged(egctrl.selectedQ)"/>
+        <input type="text" ng-model="egctrl.selectedQ.decimal.precision" ng-if="egctrl.selectedQ.decimalBool">
+      </div>
+      <div>
+        <label for="range">minRange</label><input type="text" ng-model="egctrl.selectedQ.range.minValue">
+        <label for="range">maxRange</label><input type="text" ng-model="egctrl.selectedQ.range.maxValue">
+      </div>
+      <div>
+        <label for="title">Title</label><input type="text" ng-model="egctrl.selectedQ.title">
+
+      </div>
+
+      <button ng-click="egctrl.addQuestion()">Add Q</button>
+      <button ng-click="egctrl.selectedQ={}; ">New Q</button>
+    </div>
+  </div>
+  <!--Ends Add Question form-->
+
+  <div ng-class="{'dimdiv':!egctrl.closed}">
+    <form name="myForm">
+
+
+      <div ng-repeat="q in egctrl.questions.slice(egctrl.qindex,egctrl.showNumberofQs)   ">
+        <ng-form name="urlForm">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">{{q.label}}
+              <button ng-click="egctrl.selectedQ=q; egctrl.closed=false;egctrl.decimalChanged(egctrl.selectedQ, true);">Edit</button>
+            </div>
+            <div class="panel-body">
+
+              <h4>Sa-Render implementation {{q.title}}</h4>
+
+              Configuration: <pre>{{q | json}}</pre> <hr>
+              <sa-component config="q" ></sa-component>
+              <!--<sa-render config="q"></sa-render>-->
+              <hr>
+            <!--  <h4>Normal Textbox to check everything is in sync.</h4>-->
+
+              <!--<sa-input  name="myField" data-xng-model="q.label" data-xtype="text" ng-click="egctrl.doAction1()"-->
+                          <!--ng-model-options="{ updateOn: 'blur' }"  ng-required="q.required" ng-readonly="!q.editable">-->
+              <!--</sa-input>-->
+              <!--<sa-input pre-text="Some Label :" name="myField1" ng-model="egctrl.test" type="text" ng-click="egctrl.doAction2()"-->
+                           <!--ng-required="q.required" ng-readonly="!q.required">-->
+              <!--</sa-input>-->
+
+          <!--    <pre>{{urlForm.myField1.$error.required}}</pre>-->
+            </div>
+          </div>
+        </ng-form>
+        <hr>
+      </div>
+      <hr>
+
+
+
+
+  <!--    <label for="required">Toggle required: </label>
+      <input type="checkbox" ng-model="egctrl.required" id="required" />
+      <hr>
+
+      <br>
+
+
+
+      <div ng-messages="myForm.$error" role="alert">
+        <div ng-message="required">Please enter a value for this field.</div>
+        <div ng-message="email">This field must be a valid email address.</div>
+        <tt>myForm.$error.email = {{!!myForm.$error.email}}</tt><br/>
+
+        <div ng-message="maxlength">This field can be at most 15 characters long.</div>
+      </div>-->
+    </form>
+  </div>
+  <style>
+    .dimdiv{
+      opacity:0.5;
+
+    }
+
+  </style>
+</div>

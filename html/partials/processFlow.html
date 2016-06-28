@@ -1,0 +1,163 @@
+<h1>Process Flow Testing</h1>
+<hr>
+{{data}}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Add process node</div>
+                <div class="panel-body">
+                    <label for="caption">Caption:</label>
+                    <input type="textbox" ng-change="generateId(node.caption)" ng-model="node.caption"/>
+                    <br>
+                    <label for="state">State:</label>
+                    <input type="text" ng-model="node.state">
+                    <br>
+                    <label for="child">Select Child</label>
+                    <select name="child" id="" ng-model="selected" ng-options="item.id as item.caption for item in data"></select>
+                    <select name="direction" id="direction" ng-model="direction">
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                        <option value="up">UP</option>
+                        <option value="down">Down</option>
+                    </select>
+                    <button class="btn-default btn-secondary" ng-click="addChild(selected, direction)">Add Child</button>
+                    <div ng-repeat="child in node.targets">
+                        <span style="background:lightgrey">
+                            {{child.id}}
+                            -- Direction:
+                            {{child.direction}}
+                        </span>
+                        <button ng-click="deleteChild(child)">
+                            Delete Child</button>
+                    </div>
+                    <hr>
+                    <button class="btn-default btn-primary" ng-click="addNode(node)">Add Node</button>
+                    <button class="btn-default btn-primary" ng-click="newNode()">New Node</button>
+
+                </div>
+
+            </div>
+            <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Add process node</div>
+                    <div class="panel-body">
+
+                        <div class="row" ng-repeat="r in data">
+                            <div class="col-sm-2">{{r.id}}</div>
+                            <div class="col-sm-2">{{r.caption}}</div>
+                            <div class="col-sm-6">
+                                <div ng-repeat="child in r.targets">
+                                    <span style="background:lightgrey">
+                                        {{child.id}}
+                                        -- Direction:
+                                        {{child.direction}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button ng-click="deleteNode(r)">Delete</button>
+                                <button ng-click="editNode(r)">Edit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Add process node
+            <button ng-click="refreshDirective()">Refresh</button>
+          </div>
+          <div class="panel-body">
+            {{node}}
+            <process-flow-directive data="data"></process-flow-directive>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<style>
+    .link {
+        fill: none;
+        stroke: #000;
+    }
+
+    .node {
+        stroke: #fff;
+    }
+
+    .completed-to-completed{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .completed-to-current{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .current-to-completed{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .current-to-current{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .completed-to-inactive, .current-to-inactive{
+      stroke-dasharray: 5px;
+      fill: none;
+      stroke: #969696;
+      stroke-width: 2px;
+    }
+
+    .inactive-to-completed{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .inactive-to-current{
+      fill: none;
+      stroke-width: 2px;
+    }
+
+    .inactive-to-inactive{
+      fill: none;
+      stroke-width: 2px;
+
+    }
+    .src-completed{
+    }
+
+    .src-current{
+    }
+
+    .src-inactive{
+    }
+
+    .dest-completed{
+    }
+
+    .dest-current{
+    }
+
+    .dest-inactive{
+    }
+
+    .joiningline{
+      stroke-opacity: 2;
+      shape-rendering: geometricPrecision;
+      fill: none;
+    }
+</style>
+</div>

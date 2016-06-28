@@ -1,0 +1,64 @@
+$btn-large-lr-padding:36px;
+$btn-medium-lr-padding:30px;
+$btn-small-lr-padding:15px;
+$btn-large-height:42px;
+$btn-medium-height:36px;
+$btn-large-font-size:16px;
+$btn-medium-font-size:14px;
+$btn-secondary-border: 1px solid $color-blue-mid;
+
+.btn{
+
+  &-primary{
+    background-color: $color-blue-mid;
+    color: $color-footer-background;
+    border: 1px solid $color-blue-mid;
+  }
+  &-secondary{
+    background-color: $color-footer-background;
+    border: $btn-secondary-border;
+    color: $color-blue-mid;
+  }
+  &-large{
+    padding: 0 $btn-large-lr-padding;
+    height: $btn-large-height;
+    font-size: $btn-large-font-size;
+  }
+  &-medium{
+    padding: 0 $btn-medium-lr-padding;
+    height: $btn-medium-height;
+    font-size: $btn-medium-font-size;
+  }
+  &-small{
+    padding: 0 $btn-small-lr-padding;
+    height: $btn-medium-height;
+    font-size: $btn-medium-font-size;
+  }
+}
+
+/* Notification */
+
+.notification{
+  height: $navbar-height;
+  font-size: $btn-large-font-size;
+  color: $color-gray-dark;
+  &-general{
+    background-color: rgba(0, 117, 203, 0.1);
+    border: solid 1px rgba(0, 117, 203, 0.5);
+  }
+  &-approved{
+    background-color: rgba(2, 135, 25, 0.1);
+    border: solid 1px rgba(2, 135, 25, 0.5);
+  }
+  &-warning{
+    background-color: rgba(255, 218, 84, 0.2);
+    border: solid 1px #ffda55;
+  }
+}
+
+/* heading typography */
+.h1 {
+  font-size: 30px !important;
+}
+
+

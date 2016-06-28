@@ -1,0 +1,56 @@
+.request-button, .request-button:hover {
+  color: $btn-text-color;
+  background-color: $color-white;
+  border-radius: $size-0px;
+  border-color: $btn-text-color;  
+}
+
+.search-cls {
+  position: relative;
+  left: -25px;
+  color: $color-gray;
+  width: 0;
+}
+.order-text {
+  margin-right: 5px;
+}
+
+.order-no {
+  margin-right: 5px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: $color-midlight-gray;
+}
+
+.status-text {
+  color: $color-mid-green;
+}
+/* Request Page : Request Box  Start */
+.request-box {
+  background-color: $color-white;
+  margin-bottom: $size-20px;
+  margin-top: $size-15px;
+  padding: $size-20px;
+  .supplier-text {
+    color: $dark-blue;
+  }
+  hr {
+    margin-top: 5px;
+  }
+  .elt-pad {
+    padding: 0 0 1px;
+  }
+  .sup-img {
+    height: 78px;
+    display: inline;
+  }
+  .left-border {
+    border-left: 1px solid $color-light-gray;
+  }
+  .arrow-icon {
+    width: 5%;
+    position: relative;
+    top: 25px;
+  }
+}
+/* Request Page : Request Box  End */

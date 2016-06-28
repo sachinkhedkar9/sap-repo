@@ -1,0 +1,63 @@
+<script type="text/ng-template" id="saTemplates-text">
+  <ng-form name="saInternalForm">
+
+    <sa-input data-xng-class="{'currencyyyyyy':!!comp.config.currency}"
+
+              data-xname="{{comp.config.key}}"
+              data-xng-model="comp.config[comp.config.ngmodel]"
+              data-xtype="{{comp.config.inputType}}"
+              data-xng-model-options="{ updateOn: 'blur' }"
+              data-xng-required="comp.config.required"
+              data-xng-readonly="!comp.config.editable"
+              data-xng-min="comp.config.range.minValue"
+              data-xng-max="comp.config.range.maxValue"
+              data-xpre-text="{{comp.config.preText}}"
+
+    >
+
+    </sa-input>
+
+    <div ng-messages="saInternalForm[comp.config.key].$error">
+      <div ng-message="required">This can not be empty.
+      </div>
+      <div ng-message="email">Please enter valid email address.
+      </div>
+      <div ng-message="pattern">Please enter valid format.
+      </div>
+      <div ng-message="min">Number is outside the current range of acceptable values.
+      </div>
+      <div ng-message="max">Number is outside the current range of acceptable values.
+      </div>
+    </div>
+  </ng-form>
+</script>
+<script type="text/ng-template" id="saTemplates-select">
+  <ng-form name="saInternalForm">
+
+    <sa-select data-xng-class="{'currencyyyyyy':!!comp.config.currency}"
+
+              data-xname="{{comp.config.key}}"
+              data-xng-model="comp.config[comp.config.ngmodel]"
+              data-xng-required="comp.config.required"
+              data-xng-readonly="!comp.config.editable"
+              data-xdefault-text="{{comp.config.defaultText}}"
+               data-xtext-field="{{comp.config.textField}}"
+               data-xvalue-field="{{comp.config.valueField}}"
+               data-xitems="{{comp.config.acceptableValues}}"
+    >
+
+    </sa-select>
+    <div ng-messages="saInternalForm[comp.config.key].$error">
+      <div ng-message="required">This can not be empty.
+      </div>
+      <div ng-message="email">Please enter valid email address.
+      </div>
+      <div ng-message="pattern">Please enter valid format.
+      </div>
+      <div ng-message="min">Number is outside the current range of acceptable values.
+      </div>
+      <div ng-message="max">Number is outside the current range of acceptable values.
+      </div>
+    </div>
+  </ng-form>
+</script>

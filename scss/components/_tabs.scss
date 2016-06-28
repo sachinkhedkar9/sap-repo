@@ -1,0 +1,19 @@
+.nav-tabs {
+  border: none;
+}
+.nav-tabs > li.active {
+  a, a:hover, a:focus {
+    background: none;
+    border: none;
+    color: $color-gray-dark;
+    font-weight: bold;
+    span {
+      border-bottom: 4px solid $btn-text-color;
+      padding: 5px 0;
+    }
+  }
+}
+.nav-tabs > li > a {
+  color: $color-gray-dark;
+  border: none;
+}

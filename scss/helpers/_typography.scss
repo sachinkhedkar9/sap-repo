@@ -1,0 +1,24 @@
+.text{
+  color: $color-gray-dark;
+  &-small{
+    font-size: $body-small;
+  }
+  &-med{
+    font-size: $body-med;
+    font-weight: bold;
+  }
+  &-large{
+    font-size: $body-large;
+    font-weight: bold;
+  }
+
+}
+.font-normal{
+  font-weight: normal;
+}
+body {
+  padding: 0;
+  background-color: #F2F2F2;
+  font-family: 'Conv_BentonSans Light';
+
+}
